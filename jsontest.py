@@ -1,10 +1,8 @@
 import json
 import datetime
 
-def search_birthday():
+def search_birthday(name):
     # look in the database if the birthday exists and return the birthday if found
-    name = input("Whose birthday are you looking for?")
-
     # open the json file
     database = load_database()
 
@@ -14,12 +12,12 @@ def search_birthday():
         print("we found "+name+'\'s birthday, it is',database[name])
     else:
         # if not return an error
-        print("no birthday found for", name)
+        write_birthday()
+
 
 def write_birthday():
-    # writing to the database
+    # writing to the databaseJua
     # input a name
-    name = input("please enter your name")
 
     # input a date
     date_string  = input("please enter your birthday, format is dd/mm/yyyy")
@@ -41,14 +39,8 @@ def load_database():
 
 while True:
     # ask the user if they want to search for a birthday or add a new one
-    val = input("please enter a name")
-
-    if val == "a":
-        write_birthday()
-    elif val == "b":
-        search_birthday()
-    else:
-        print("please type a or b")
+    name = input("Whose birthday are you looking for?")
+    search_birthday(name)
 
 # json.load(f) #loads from a file previously opened
 # json.loads(s) #loads from a string
